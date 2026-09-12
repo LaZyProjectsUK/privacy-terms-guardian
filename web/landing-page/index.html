@@ -1,0 +1,571 @@
+<!doctype html>
+<title>Privacy &amp; Terms Guardian</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+  :root {
+    --paper: #f3f0e7;
+    --paper-alt: #eae6d8;
+    --paper-line: #d9d2bf;
+    --ink: #201c15;
+    --ink-soft: #5c5544;
+    --ink-faint: #8a8271;
+    --highlight: #ffd93d;
+    --highlight-ink: #201c15;
+    --flag-high: #b3392a;
+    --flag-mid: #a86a1d;
+    --flag-ok: #4b6b4f;
+    --stamp: #22305c;
+    --stamp-ink: #f3f0e7;
+    --shadow: rgba(32, 28, 21, 0.14);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #17150f;
+      --paper-alt: #201d15;
+      --paper-line: #38331f;
+      --ink: #ece6d6;
+      --ink-soft: #b3ab94;
+      --ink-faint: #7d765f;
+      --highlight: #e8c53d;
+      --highlight-ink: #17150f;
+      --flag-high: #e2685a;
+      --flag-mid: #d99a4e;
+      --flag-ok: #7fa383;
+      --stamp: #8ea0e8;
+      --stamp-ink: #14121b;
+      --shadow: rgba(0, 0, 0, 0.4);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #17150f;
+    --paper-alt: #201d15;
+    --paper-line: #38331f;
+    --ink: #ece6d6;
+    --ink-soft: #b3ab94;
+    --ink-faint: #7d765f;
+    --highlight: #e8c53d;
+    --highlight-ink: #17150f;
+    --flag-high: #e2685a;
+    --flag-mid: #d99a4e;
+    --flag-ok: #7fa383;
+    --stamp: #8ea0e8;
+    --stamp-ink: #14121b;
+    --shadow: rgba(0, 0, 0, 0.4);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+    font-size: 17px;
+    line-height: 1.65;
+    padding-inline: 20px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding-block: 56px 80px;
+  }
+
+  h1, h2, h3 { font-family: "Fraunces", Georgia, serif; text-wrap: balance; margin: 0; }
+
+  .eyebrow {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 12px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 22px;
+    height: 1px;
+    background: var(--ink-faint);
+    display: inline-block;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero { padding-top: 4px; }
+  .hero h1 {
+    font-size: clamp(2.1rem, 5vw, 3.15rem);
+    font-weight: 600;
+    line-height: 1.08;
+    margin-top: 16px;
+    letter-spacing: -0.01em;
+  }
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--ink-soft);
+  }
+  .hero p.lede {
+    font-size: 1.18rem;
+    color: var(--ink-soft);
+    max-width: 46em;
+    margin-top: 20px;
+  }
+
+  .cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; align-items: center; }
+  .btn {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13.5px;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 3px;
+    border: 1px solid var(--ink);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn.primary { background: var(--stamp); color: var(--stamp-ink); border-color: var(--stamp); }
+  .btn.ghost { background: transparent; color: var(--ink); }
+  .btn.primary:hover { filter: brightness(1.08); }
+  .btn.ghost:hover { background: var(--paper-alt); }
+
+  /* ---------- Clause document mock ---------- */
+  .clause-doc {
+    margin-top: 44px;
+    background: var(--paper-alt);
+    border: 1px solid var(--paper-line);
+    border-radius: 4px;
+    padding: 26px 26px 22px;
+    box-shadow: 0 18px 40px -18px var(--shadow);
+    position: relative;
+  }
+  .clause-doc .doc-head {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11.5px;
+    color: var(--ink-faint);
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--paper-line);
+    padding-bottom: 10px;
+    margin-bottom: 16px;
+    letter-spacing: 0.04em;
+  }
+  .clause-doc p { margin: 0 0 12px; color: var(--ink-soft); font-size: 15.5px; }
+  .clause-doc p:last-of-type { margin-bottom: 0; }
+  .mark {
+    background: linear-gradient(120deg, var(--highlight) 0%, var(--highlight) 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 40%;
+    background-position: 0 88%;
+    color: var(--ink);
+    padding: 0 1px;
+  }
+
+  .annot {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--paper-line);
+    display: grid;
+    gap: 10px;
+  }
+  .annot-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+  .flag {
+    flex: none;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    margin-top: 5px;
+  }
+  .flag.high { background: var(--flag-high); }
+  .flag.mid { background: var(--flag-mid); }
+  .flag.ok { background: var(--flag-ok); }
+  .annot-item span.label { color: var(--ink); }
+
+  /* ---------- Section rhythm ---------- */
+  section.clause {
+    margin-top: 76px;
+    padding-top: 26px;
+    border-top: 1px solid var(--paper-line);
+  }
+  .clause-num {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12.5px;
+    color: var(--ink-faint);
+    letter-spacing: 0.06em;
+  }
+  section.clause h2 {
+    font-size: clamp(1.5rem, 3.2vw, 1.9rem);
+    font-weight: 600;
+    margin-top: 8px;
+  }
+  section.clause > p.dek {
+    color: var(--ink-soft);
+    max-width: 46em;
+    margin-top: 12px;
+    font-size: 1.02rem;
+  }
+
+  /* ---------- Problem: struck-through wall ---------- */
+  .struck {
+    margin-top: 22px;
+    font-size: 14.5px;
+    line-height: 1.9;
+    color: var(--ink-faint);
+    text-decoration: line-through;
+    text-decoration-color: var(--ink-faint);
+    max-width: 46em;
+  }
+  .stamp-callout {
+    margin-top: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--flag-high);
+    border: 1.5px solid var(--flag-high);
+    padding: 7px 12px;
+    border-radius: 2px;
+    transform: rotate(-1.2deg);
+  }
+
+  /* ---------- Steps ---------- */
+  .steps { display: grid; gap: 22px; margin-top: 28px; }
+  .step {
+    display: grid;
+    grid-template-columns: 34px 1fr;
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--paper-line);
+  }
+  .step:last-child { border-bottom: none; }
+  .step .n {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+    color: var(--ink-faint);
+    padding-top: 3px;
+  }
+  .step h3 { font-size: 1.12rem; font-weight: 600; }
+  .step p { margin: 8px 0 0; color: var(--ink-soft); font-size: 15.5px; max-width: 42em; }
+  .step .example {
+    margin-top: 10px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12.5px;
+    color: var(--ink);
+    background: var(--paper-alt);
+    border-left: 3px solid var(--flag-mid);
+    padding: 8px 12px;
+    display: inline-block;
+  }
+  .step .example.ok-border { border-left-color: var(--flag-ok); }
+
+  /* ---------- Demo ---------- */
+  .demo-frame {
+    margin-top: 26px;
+    position: relative;
+    padding: 14px 14px 18px;
+    background: var(--paper-alt);
+    border: 1px solid var(--paper-line);
+    border-radius: 6px;
+    box-shadow: 0 20px 44px -20px var(--shadow);
+  }
+  .demo-frame .pin {
+    position: absolute;
+    top: -11px; left: 28px;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--flag-high);
+    box-shadow: 0 2px 4px var(--shadow);
+    border: 2px solid var(--paper);
+  }
+  .demo-frame img { display: block; width: 100%; border-radius: 3px; }
+  .demo-cap {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11.5px;
+    color: var(--ink-faint);
+    margin-top: 10px;
+    letter-spacing: 0.02em;
+  }
+
+  /* ---------- Compare ---------- */
+  .compare-list { margin-top: 30px; display: grid; gap: 0; }
+  .compare-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 20px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--paper-line);
+  }
+  .compare-row:last-child { border-bottom: none; }
+  .compare-label {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    padding-top: 2px;
+  }
+  .compare-them, .compare-us {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  .compare-them { color: var(--ink-faint); margin-bottom: 8px; }
+  .compare-us { color: var(--ink); }
+  .compare-them .tag, .compare-us .tag {
+    flex: none;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    padding: 2px 6px;
+    border-radius: 2px;
+    margin-top: 2px;
+  }
+  .compare-them .tag { border: 1px solid var(--ink-faint); color: var(--ink-faint); }
+  .compare-us .tag { background: var(--flag-ok); color: var(--paper); }
+  .compare-cite { margin-top: 18px; font-size: 13.5px; color: var(--ink-faint); }
+  .compare-cite a { color: var(--ink-soft); }
+
+  @media (max-width: 560px) {
+    .compare-row { grid-template-columns: 1fr; gap: 6px; }
+  }
+
+  /* ---------- Astra / technical ---------- */
+  .arch {
+    margin-top: 22px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+    color: var(--ink-soft);
+    background: var(--paper-alt);
+    border: 1px solid var(--paper-line);
+    border-radius: 4px;
+    padding: 18px 20px;
+    line-height: 1.9;
+    overflow-x: auto;
+  }
+  .arch .arrow { color: var(--ink-faint); }
+  .footnote { color: var(--ink-faint); font-size: 13.5px; margin-top: 16px; max-width: 46em; }
+  .footnote strong { color: var(--ink-soft); }
+
+  /* ---------- Footer ---------- */
+  footer {
+    margin-top: 80px;
+    padding-top: 26px;
+    border-top: 1px solid var(--paper-line);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  footer .seal {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11.5px;
+    color: var(--ink-faint);
+    letter-spacing: 0.04em;
+  }
+  footer .links { display: flex; gap: 18px; font-family: "IBM Plex Mono", monospace; font-size: 12.5px; }
+  footer a { color: var(--ink-soft); text-decoration: underline; text-decoration-color: var(--paper-line); text-underline-offset: 3px; }
+  footer a:hover { color: var(--ink); }
+
+  @media (max-width: 480px) {
+    .page { padding-block: 36px 56px; }
+    .step { grid-template-columns: 24px 1fr; }
+  }
+</style>
+
+<div class="page">
+
+  <div class="eyebrow">Chrome extension · Powered by GPT-6 Astra</div>
+
+  <section class="hero">
+    <h1>Nobody reads the terms.<br /><em>Someone should, before you sign.</em></h1>
+    <p class="lede">
+      Privacy &amp; Terms Guardian reads the Privacy Policy and Terms of Service behind every sign-up form —
+      live, on the page, in front of you — and tells you in one plain sentence what could actually go wrong.
+      Then, if you'd rather not agree to it, it finds you something better.
+    </p>
+
+    <div class="cta-row">
+      <a class="btn primary" href="https://github.com/" rel="noopener">↳ View on GitHub</a>
+      <a class="btn ghost" href="#demo">Watch it read a real sign-up form</a>
+    </div>
+
+    <div class="clause-doc">
+      <div class="doc-head">
+        <span>notion.so · sign-up · terms of service ¶4</span>
+        <span>reviewed live</span>
+      </div>
+      <p>4.1 &mdash; You agree that <span class="mark">advertising partners may access information about your
+      activity</span> in order to make advertising more relevant to you across the internet.</p>
+      <p>4.2 &mdash; Where you register with a business address, we may <span class="mark">supplement your account
+      information with data obtained from third parties</span> for marketing and sales purposes.</p>
+      <div class="annot">
+        <div class="annot-item"><span class="flag high"></span><span class="label">Advertising partners can track your activity on Notion to target you with ads across the internet.</span></div>
+        <div class="annot-item"><span class="flag mid"></span><span class="label">Notion may enrich your work-email account with third-party information for targeted marketing.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="clause">
+    <div class="clause-num">1.0 — The problem</div>
+    <h2>The average privacy policy takes 29 minutes to read. Nobody has 29 minutes.</h2>
+    <p class="dek">
+      So everyone clicks "I agree," and the industry knows it. That's exactly where the real terms live —
+      not in the headline promise ("we don't sell your data"), but in the clause two pages later that quietly
+      allows the exception.
+    </p>
+    <p class="struck">
+      By creating an account, you acknowledge that you have read and understood this Agreement in its entirety,
+      including all exhibits, schedules, and amendments incorporated herein by reference, and you consent to the
+      collection, use, disclosure, retention, and cross-border transfer of your personal information as further
+      described in Sections 3 through 17 and the accompanying Privacy Statement, which may be updated from time
+      to time at our sole discretion&hellip;
+    </p>
+    <div class="stamp-callout">no one read this</div>
+  </section>
+
+  <section class="clause">
+    <div class="clause-num">2.0 — How it works</div>
+    <h2>Three things, done live, before you click "Create account"</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="n">01</div>
+        <div>
+          <h3>Analyse</h3>
+          <p>The moment a sign-up form shows a password field and a Terms/Privacy link, Guardian reads both
+          documents on the spot and surfaces only what could actually disadvantage you — nothing you'd expect,
+          nothing padded out to look thorough.</p>
+          <div class="example">"ElevenLabs receives permanent, irrevocable rights to reuse and publish your content and voice for product development."</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="n">02</div>
+        <div>
+          <h3>Protect</h3>
+          <p>Cookie banners get the same treatment: reject everything non-essential automatically, open the
+          preference panel when there's no direct "reject all," and verify the setting actually took before
+          telling you it's done.</p>
+          <div class="example ok-border">Necessary ✓ · Analytics ✕ · Advertising ✕ · Personalisation ✕</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="n">03</div>
+        <div>
+          <h3>Find Better</h3>
+          <p>If the verdict is "consider alternatives," Guardian identifies what the service actually does and
+          names real competitors that handle your data better — never invented, never padded with a company
+          that doesn't exist.</p>
+          <div class="example ok-border">Obsidian — 96/100 · Anytype — 94/100 · AppFlowy — 91/100</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="clause" id="demo">
+    <div class="clause-num">3.0 — Exhibit A</div>
+    <h2>Recorded live on Notion's real sign-up page</h2>
+    <p class="dek">No staged mockup — this is the actual extension, on the actual Notion sign-up form, reading
+    the actual linked policies while you watch.</p>
+    <div class="demo-frame">
+      <span class="pin"></span>
+      <img src="demo.gif" alt="Privacy & Terms Guardian reviewing Notion's sign-up terms live, then suggesting privacy-first alternatives" />
+    </div>
+    <p class="demo-cap">privacy-guardian-demo.gif — unedited capture, September 2026</p>
+  </section>
+
+  <section class="clause">
+    <div class="clause-num">4.0 — Prior art</div>
+    <h2>Reviewed against what's already out there</h2>
+    <p class="dek">
+      AI summarizers like Simple Terms and SimpliTerms, the volunteer-curated
+      Terms of Service; Didn't Read database, cookie-consent automators like Consent-O-Matic, and
+      fixed-list redirect tools like Privacy Redirect each cover one slice of this. None do all of it,
+      and none do it quite this way.
+    </p>
+
+    <div class="compare-list">
+      <div class="compare-row">
+        <div class="compare-label">When it fires</div>
+        <div>
+          <div class="compare-them"><span class="tag">them</span>You click the icon, on a page you're already reading.</div>
+          <div class="compare-us"><span class="tag">us</span>Fires itself the moment a real sign-up moment appears — a password field, a submit button, or a checkbox beside a Terms link.</div>
+        </div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-label">Data source</div>
+        <div>
+          <div class="compare-them"><span class="tag">them</span>ToS;DR depends on a volunteer having already reviewed the exact site — nothing for a new or private app.</div>
+          <div class="compare-us"><span class="tag">us</span>Reads the actual current document live, every time, so it works on a beta that launched yesterday.</div>
+        </div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-label">Length</div>
+        <div>
+          <div class="compare-them"><span class="tag">them</span>100&ndash;300 word summaries.</div>
+          <div class="compare-us"><span class="tag">us</span>A capped, worst-first, plain-English list. No quoted clauses &mdash; if it's another wall of text, nobody reads that either.</div>
+        </div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-label">Scope</div>
+        <div>
+          <div class="compare-them"><span class="tag">them</span>A summarizer, or a cookie-blocker, or a redirector &mdash; pick one.</div>
+          <div class="compare-us"><span class="tag">us</span>Analyse, Protect, and Find Better, in sequence, in one extension.</div>
+        </div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-label">Cross-domain signups</div>
+        <div>
+          <div class="compare-them"><span class="tag">them</span>Whatever single page you happen to be on.</div>
+          <div class="compare-us"><span class="tag">us</span>Follows identity-provider hops (Tinkercad &rarr; accounts.autodesk.com) and falls back to the site's real root domain.</div>
+        </div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-label">Find Better</div>
+        <div>
+          <div class="compare-them"><span class="tag">them</span>A fixed list of known alternatives, or nothing.</div>
+          <div class="compare-us"><span class="tag">us</span>Grounded in the page's real content, names only real companies, and says "not enough information" rather than inventing one.</div>
+        </div>
+      </div>
+    </div>
+    <p class="compare-cite">Compared against Simple Terms, SimpliTerms, T&amp;C Reader, Polirizer,
+    <a href="https://tosdr.org/en" rel="noopener">tosdr.org</a>, Consent-O-Matic, and Privacy Redirect — September 2026.</p>
+  </section>
+
+  <section class="clause">
+    <div class="clause-num">5.0 — Under the hood</div>
+    <h2>Built on GPT-6 Astra — but not for every click</h2>
+    <p class="dek">
+      The extension never holds the API key. It talks to a small backend, which is the only thing that ever
+      calls Astra — for reading policies, resolving contradictions between sections, and identifying real
+      alternatives. Known cookie-consent platforms are handled with deterministic rules; Astra is reserved
+      for judgment calls, not busywork.
+    </p>
+    <div class="arch">Chrome Extension <span class="arrow">→ https →</span> Backend API <span class="arrow">→ Responses API →</span> GPT-6 Astra</div>
+    <p class="footnote"><strong>Every action is validated before it runs</strong> — the extension refuses to
+    touch password fields, submit buttons, or forms outside a cookie-consent dialog, regardless of what a
+    model proposes.</p>
+  </section>
+
+  <footer>
+    <div class="seal">Submitted to the GPT-6 Astra Challenge</div>
+    <div class="links">
+      <a href="https://github.com/" rel="noopener">GitHub</a>
+      <a href="#demo">Demo</a>
+    </div>
+  </footer>
+
+</div>
