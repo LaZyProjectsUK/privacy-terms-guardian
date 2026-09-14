@@ -1,5 +1,7 @@
 .idea/
 node_modules/
 dist/
+!extension/dist/
 .env
 *.log
+/*.zip
