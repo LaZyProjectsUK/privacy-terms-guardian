@@ -21,39 +21,29 @@ const POLICY_TEXT = /terms(\s+(of\s+(service|use)|and\s+conditions))?|privacy(\s
 export function detectSignupContext(): PolicyLink[] | null {
   const links = findPolicyLinks(document, location.href);
 
-  // Strong signal: a real password field, or a genuine submit button —
-  // this is a signup/login form even if it has no policy link of its own
-  // (root-domain fallback handles that case).
-  if (document.querySelector('input[type="password"]') || hasSubmitLikeButton()) {
+  // Strong signal: a real password field — this is a sign-up/sign-in form
+  // even if it has no policy link of its own (root-domain fallback handles
+  // that case). Deliberately NOT "any submit-shaped button on the page" —
+  // that used to also match ordinary content pages that happen to have an
+  // unrelated form (newsletter signup, search, comments) elsewhere on the
+  // page, combined with a routine footer Privacy Policy link, firing the
+  // overlay on pages with no actual sign-up/consent moment at all.
+  if (document.querySelector('input[type="password"]')) {
     return links;
   }
 
-  // Weaker signal: no password/submit here, but a checkbox sitting right
+  // Weaker signal: no password field here, but a checkbox sitting right
   // next to one of the links we found — the classic "I certify... as
   // described in the Terms of Service" consent pattern (e.g. Tinkercad's
   // Teacher Agreement, which has no password field and its "I agree"
   // button is type="button", not "submit"). Only counts when a real link
   // is actually nearby, so an unrelated checkbox elsewhere on the page
-  // doesn't trigger a root-domain fetch for nothing.
+  // doesn't trigger anything.
   if (links.length > 0 && hasCheckboxNearAnyLink(links)) {
     return links;
   }
 
   return null;
-}
-
-/**
- * Checks the `.type` IDL property, not the `type` attribute — a plain
- * `<button>Sign up</button>` with no explicit attribute is still a submit
- * button by HTML default, and modern frameworks routinely skip the
- * attribute. `button[type="submit"]` misses those; this doesn't.
- */
-function hasSubmitLikeButton(): boolean {
-  const buttons = document.querySelectorAll("button, input");
-  for (const el of Array.from(buttons)) {
-    if ((el as HTMLButtonElement | HTMLInputElement).type === "submit") return true;
-  }
-  return false;
 }
 
 function hasCheckboxNearAnyLink(links: PolicyLink[]): boolean {
