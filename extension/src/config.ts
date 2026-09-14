@@ -1,1 +1,1 @@
-export const BACKEND_URL = "http://localhost:8787/api";
+export const BACKEND_URL = "https://privacy-terms-guardian.onrender.com/api";
