@@ -555,6 +555,9 @@
       for judgment calls, not busywork.
     </p>
     <div class="arch">Chrome Extension <span class="arrow">→ https →</span> Backend API <span class="arrow">→ Responses API →</span> GPT-6 Astra</div>
+    <p class="footnote">The backend runs on Render's free tier, which sleeps after 15 minutes idle — the
+    first request after a quiet spell can take up to 50 seconds to wake it back up. Every request after
+    that is fast; this is a hosting-tier tradeoff, not the extension being slow.</p>
     <p class="footnote"><strong>Every action is validated before it runs</strong> — the extension refuses to
     touch password fields, submit buttons, or forms outside a cookie-consent dialog, regardless of what a
     model proposes.</p>
